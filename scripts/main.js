@@ -61,6 +61,16 @@ function afficheListeMessages(listeMessages) {
     }
 }
 
+function getUtilisateurs() {
+    //on veut vider le tableau des utilisateurs
+    utilisateurs.splice(0, utilisateurs.length);
+
+    //recuperer sur le serveur la list des utilisateurs
+    // Parcourir la liste des utilisateurs et :
+
+        // pour chaque utilisateur on l'ajoute dans la page html
+        fetch('http://localhost:9001/utilisateurs.php?')
+}
 function getMessages(nomConversation) {
     messages.splice(0, messages.length);
     // On doit ici spécifier une URL qui retournera les informations demandées
