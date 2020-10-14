@@ -31,7 +31,8 @@ function start() {
     // Ecoute d'événements/interactions
     document.querySelector('#conversation-courante .messages').scrollTop = document.querySelector('#conversation-courante .messages').scrollHeight;
     ecouteSubmitMessage();
-
+// récupération des utilisateurs 
+    getUtilisateurs();
     // Affichage
     afficheListeUtilisateurs(utilisateurs);
     setInterval(() => { afficheListeUtilisateurs(utilisateurs) }, 5000);
@@ -65,12 +66,20 @@ function getUtilisateurs() {
     //on veut vider le tableau des utilisateurs
     utilisateurs.splice(0, utilisateurs.length);
 
-    //recuperer sur le serveur la list des utilisateurs
-    // Parcourir la liste des utilisateurs et :
+
 
         // pour chaque utilisateur on l'ajoute dans la page html
         fetch('http://localhost:9001/utilisateurs.php?')
+            .then(response => response.json())
+            .then(utilisateursDuServeur => {
+    // Parcourir la liste des utilisateurs et :
+                utilisateursDuServeur.forEach(utilisateur=>{
+                    console.log("UTILISATEUR",utilisateur)
+                }
+        // pour chaque utilisateur on l'ajoute dans la page html
+            });
 }
+
 function getMessages(nomConversation) {
     messages.splice(0, messages.length);
     // On doit ici spécifier une URL qui retournera les informations demandées
